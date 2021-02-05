@@ -1,0 +1,33 @@
+HOW THE THIS KEYWORD ACTUALLY WORKS:
+ The this keyword is  a special variable that is created for every execution context(every function). Now in general terms the this keyword will always take the value of the owner of the function in which the this keyword is used. We also say that it points to the owner of that function.
+
+And the value of the this keyword is not static. It depends on how the function is called, and its value is only assigned when the function is actually called.
+So the this keyword is basically a normal value.
+For ex: If we set X to five then the X will always be five. But the this keyword again depends on the way in which a function is called. What does that actually mean?
+
+Well, let's analyze four different ways in which functions can be called.And the first way to call a function is as a method. 
+So when we call a method then the this keyword inside that method will simply point to the object on which the method is called or in other words it points to the object that is calling the method.  
+
+So lets illustrate it with one simple example:
+  const Shishiranjan = {
+  name: 'Shishiranjan Thakur';
+  year: 1997;
+calcAge: function() {
+return 2021 - this.year;
+}
+
+};
+
+Shishiranjan.calcAge();
+
+Here the this keyword simply points to the shishiranjan object which has the  property named as year which is equal to  1997. So this.year is same as the jonas.year. But this.year is the best and efficient way to write so.
+
+Another way of calling functions is to call them as normal functions. So not as a method and not so attatched to any object.
+In this case the this keyword will simply be undefined. However that is only valid for strict mode. So if u are not in strict mode then  it will point to the global object which in this case is window object.
+
+Next up we have arrow functions and while arrow functions are not exactly a way of calling functions. it is a important kind of function that we need to consider because arrow functions do not get their own this keyword. Instead if u use the this variable in arrow functions then it will simply be this keyword of the parent function. And in technical terms this is called the lexical this keyword.
+
+Finally if a function is called as an event listener then the this keyword will always point to the DOM element that the handler function is attatched to.
+NOTE: This keyword will never point to the function in which we are using it.
+Also the this keyword will never point to the variable environment.
+There are also some other ways by which we can call a function.For ex using the new method or bind or apply methods.
