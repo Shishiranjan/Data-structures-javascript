@@ -1,0 +1,39 @@
+What is javascipt engine?
+So, A javascript engine is simply a computer program that executes the javascript code. There are lots of steps involved in doing that but essentially executing Javascript code is what an engine does. Now every browser has its own javascript engine but the most well known is Google's V-8. The V-8 engine powers Google chrome  but also Node.js which is that javascript runtime, the one that we can use to build server side application with javascript. And of course all the other browsers have their own javascript engines.
+
+Any Javascript engine always contains two parts which are call stack and heap. 
+The call stacks is something where our code is actually executed using something called the execution contexts. Then the heap is an unstructured memory pool which stores all the objects that our application needs.
+Main Difference between compilation and interpretation.
+
+In Compilation, Entire code is converted into machine code at once, and then written to a binary file executed by a computer.
+So basically there are two steps involved. 
+In first step, the conversion of source code into machine code is done. conversion is done inside the portable file called as binary file.
+In second step, we have to execute that converted machine code and then display the result.
+You can only execute the code only after compilation.
+But on the other hand , in interpretation, there is an interpreter which runs through the source code and executes it line by line rather than converting into machine code.
+Here only one step involved, i.e. directly executing the code line by line. But the code still needs to be converted to a machine code.
+Javascript is purely an interpreted language but the problem with interpreted language is that it is not optimized. It is not as fast as compiled language. And in modern context low performance language is usually unacceptable. 
+So the javascript uses the mix between two called as just in time compilation.
+This approach basically convert the source code into machine code at once and then executes it right away. So we still have two steps involved here. But here is no portable file to execute. Here the execution happens only after a compilation.
+
+So as a piece of code enters the engine the first step is to parse the code which essentially means to read the code. During the parsing process the code is parsed into a data structure called the abstract syntax tree or AST.This works by first splitting up each line of code into pieces that are meaningful to the language like the const or function keywords and then saving all these pieces into a tree in a structured way. This step also checks if there are any syntax errors and the resulting tree is later used to generate the machine code.
+The next step is compilation which takes the generated AST and compiles it into machine code.This machine code then gets executed right away. And execution only happens in javascript engine call stack.
+Modern javascript has also some clever optimization strategies.
+What they do is to create a very unoptimized version of machine code in the beginning just so that it can start executiong as fast as possible.
+Then in the background the code is being optimized and recompiled during the already running program execution.
+And this can be done most of the times and after each optimization the unoptimized code is simply swept for the new optimized code without ever stopping execution.
+And all this parsing, compilation and optimization  happens in some special threads inside the engine that we cannot access from our code. So completely separate from the main thread that is basically running into call stack.
+
+JAVASCRIPT RUNTIME:
+We can imagine the javascript runtime as a big box or a big container which includes all the thing that we need in order to use javascript. And the heart of any javascript runtime is javascript engine. Withoug an engine there is no runtime and there is no javascript at all. However the engine alone is not enough. In order to work properly, we also need access to web APIs like DOM, timers, Fetch API etc. 
+So essentially,web APIs are functionalities provided to the engine but which are actually not the part of the javascript language itself. Javascript simply gets access to these APIs through the global window object.
+Javascript runtime also includes something called as callback queue.
+This is a data structure that contains all the callback functions that are ready to be executed.
+For example, we attatch eventhandler functions to DOM elements like a button to react to certain events. 
+And these event handler functions are also called callback functions.
+So as an event happens, for example a click, the callback function will be called.
+So the first thing that actually happens after the event is that callback functions is put into the callback queue and then when the call stack is empty the callback function is passed into the stack so that it can be executed. 
+And this happens by something called the event loop.
+So basically the event loop takes the callback functions from the callback queue  and puts them in the call stack so that they can be executed. 
+
+  
