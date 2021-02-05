@@ -1,0 +1,44 @@
+So now lets dig a  little bit deeper about how the code is executed?
+So lets suppose that our first step of execution i.e. compilation of code is done.
+So the code is now ready to be executed. What happens then is that a so-called global execution context is created for the top level code.
+ And the top level code is that code which is basically not inside any function.So in the beginning the code that is outside of the functions will be executed.
+
+ For Example:
+
+const name  = " Shishiranjan";
+const first = () => {
+let a = 5;
+ const b = second();
+ a = a+b;
+return a;
+}
+
+function second() {
+var c = 2;
+return c;
+}
+
+Here we can see that the decalaration of name is independent and is outside of function. So it gets executed in the global execution context.
+The function body is only executed when called.
+So we know that a global execution context is created only for the top level code.
+But what  actually is an execution context?
+Well it is an abstract concept which can be defined as an environment in which a piece of js code is executed. It also stores some necessary information for some code to be executed such as local variables or arguments passed into a function.
+And to make this a bit more clear, lets imagine that you order a pizza at a takeaway.So usually that pizza comes in a box, right? And it also come with some other stuff like Chilly powder, sauce, receipt etc.
+So in this analogy pizza is the javascript code to be executed and the box is of course the execution context. The box also contains some other stuff which are necessary to eat a pizza.
+In any javascript project, no matter how large it is, there is always  exactly one global execution context. It's always there as the default context where the top level code will be executed.
+Once the top level code will get executed, functions finally start to execute as well.
+ For each and every function call, a new execution context will be created containing all the info that is necessary to run exactly that function. And the same happens for methods also. All the execution contexts together make up the call stack.
+When the functions will get completely executed, the emgine will basically keep waiting for the callback functions to arrive so that it can execute these.
+For ex: a callback function associated with click event.And it is the event loop that provides these new callback functions.
+
+
+WHAT'S INSIDE EXECUTION CONTEXT?
+The first thing that is inside of it is so called variable environment. In this environment all our variables and function declarations are stored and there is also a special arguments object which contains all the arguments that were passed into the function that the current execution context 
+belongs to.
+Each function gets its own execution context as soon as the function is called.
+
+The second thing that is inside of it is scope chain which basically consists of the references to variables that are located outside of the current function.
+And to keep track of the scope chain it is stored in each execution context.Finally each context will also get a special variable called the 'THIS' keyword.
+And these all three things happen before execution phase.
+NOTE: Execution contexts belonging to arrow function do not get their own arguments keyword and this keyword.
+So basically arrow functions dont have arguments and this keyword. 
