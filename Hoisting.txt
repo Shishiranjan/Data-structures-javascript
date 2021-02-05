@@ -1,0 +1,25 @@
+HOISTING:
+The next topic that we need to talk about is a very misunderstood concept in JavaScript and that is hoisting. So we learned that an execution context always contains 3 parts which are variable environment, scope chain in the current context and this keyword.
+Now, we take a closer look at the variable environment and in particular at how variables are actually created in JS.
+So in javascript we have a mechanism called hoisting.
+And hoisting basically makes some types of variables accessible/usable in the code before they are actually declared.
+Now many people simply define hoisting by saying that variables are magically lifted or moved to the top of their scope. For Ex: to the top of a function.
+But behind the scenes, that not happpens. Instead BTS, the code is basically scanned for variable declarations before it is executed. Then for each variable that is found in the code, a new property is created in a variable environment object.
+
+Now hoisting doesnot work the same for all variable types.
+For ex: 
+Function declarations are actually hoisted and the initial value in the variable environment is set to the actual function. In practice what it means is that we can use function declarations before they are actually declared in the code. And function declarations are always block scoped and it is only true for strict mode but not for sloppy mode.
+
+Variables declared with var are also hoisted but the hoisting works in a different way here. Unlike functions when we try to access a var variable before it is actually declared in the code then we get the result as undefined. The variables declared with var are function scoped.
+
+On the other hand the variables declared with let and const are not hoisted. I mean technically they are hoisted but their value is basically set to uninitialized.
+So there is no value to work at all.Instead we say that these variables are placed in a so-called temporal dead zone or TDZ which makes it so that we can't access the variables between the beginning of the scope and to place where the variables are declared. So as a consequence if we attempt to use a let or const variable before its declared, we get an error. Also keep in mind that let and const are block scoped.
+
+How does hoisting work for function expressions and arrow functions. Well, it depends if they were created using var or let or const. Because keep in mind that these functions are simply the variables. Function expressions created with var is hoisted to undefined but if created with let or const, it is not usable before it is declared in a code because of the temporal dead zone.
+
+WHY IS THERE NEED OF TDZ IN MODERN JAVASCRIPT?
+
+The main reason is that due to TDZ it makes easier to avoid and catch errors. Accessing variable before declaration is a bad practice and should be avoided.
+Because using a variable that is set to undefined already before it is actually declared can cause serious bugs which might be hard to find.
+The next reason is to make the const variables work as they used to.
+So as we know that we cannot reassign const variables.
