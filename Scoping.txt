@@ -1,0 +1,43 @@
+SCOPE CONCEPTS:
+
+Scoping basically controls how the programs variables are organized and accessed?
+It basically asks the question that "Where do variables live"? OR "Where can we access a certain variable, and where not"?
+
+Now in javascript we have something called the lexical scoping.
+
+LEXICAL SCOPING:
+It means that the way variables are organized and accessed are entirely controlled by the placement of functions and blocks in the program code.
+For ex: A function that is written inside another function 
+has access to the variables of the parent function?
+
+So again, variable scoping is influenced by where exactly we write our functions and code blocks.
+Scope is a space or environment in which a certain variable is declared. There is global scope, function scope and block scope. In case of functions there is a variable environment.
+
+Scope of a variable is an entire region of our code where a certain variable can be accessed.
+Scope is simply a place in our code where variables have been declared.
+
+GLOBAL SCOPE:
+It is only for the top level code. So this is for the varibales that are declared outside of any function or block. These variables will be accessible every where in our program, in all functions and blocks.
+Forex:
+const name = "Shishiranjan Thakur"
+const age  = "23";
+const year = "1997";
+
+FUNCTION SCOPE:
+And the variables declared inside that function scope are only accessible inside that function. This is also called the local scope. So local variables live in the function so to say. And outside of the function the variables are not accessible at all.
+For ex:
+function calcAge(birthYear) {
+const now = 2037;
+const age = now - birthYear;
+return age;
+}
+
+console.log(now);
+
+Anyway in this example here the now variable is 2037 inside the calcAge function. And therefore we can use it inside the function to do calculations.But outside of the function when we try to log it to the console, we get a reference error.
+So js is trying to find the now variable in this global scope i.e. outside of the function, but cannot find it.And so there be an error.
+
+Traditionally, only function is used to create scopes but from ES6  blocks also create scopes. In block scoping variables are accessile only inside the block.
+However, this only applies to variables declared with let or const.
+In ES5 or before than that there is only global scope and function scope.And that's why ES5 variables declared with var  only care about functions, but not about blocks.
+Finally in ES6, all functions are also block scoped at least in strict mode. And just like with let and const variables, this means that the functions declared inside a block are only accessible inside that block.
